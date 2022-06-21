@@ -1,0 +1,165 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: lampralexandros@gmail.com
+  description: This is a sample openApi document
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://wabli.netlify.app/
+  title: TempApi
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- description: local-host
+  url: http://localhost:8090/v1
+security:
+- {}
+tags:
+- description: not yet ready
+  name: app
+paths:
+  /app:
+    post:
+      operationId: createapp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/app'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/app'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - app
+      x-eov-operation-handler: controllers/AppController
+  /app/{appId}:
+    delete:
+      operationId: deleteapp
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - app
+      x-eov-operation-handler: controllers/AppController
+    get:
+      operationId: getapp
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/app'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - app
+      x-eov-operation-handler: controllers/AppController
+    put:
+      operationId: updateapp
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/app'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/app'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - app
+      x-eov-operation-handler: controllers/AppController
+  /app/getAll:
+    get:
+      operationId: getAllapp
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/app'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - app
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/AppController
+components:
+  schemas:
+    app:
+      example:
+        appDescription: appDescription
+        appImage:
+          data: data
+          name: name
+        _id: _id
+        appTitle: appTitle
+      properties:
+        _id:
+          type: string
+        appTitle:
+          type: string
+        appDescription:
+          type: string
+        appImage:
+          $ref: '#/components/schemas/app_appImage'
+      required:
+      - appDescription
+      - appImage
+      - appTitle
+      type: object
+    app_appImage:
+      example:
+        data: data
+        name: name
+      properties:
+        data:
+          type: string
+        name:
+          type: string
+      type: object
+      x-isSchemaOnly: "true"
