@@ -2,9 +2,9 @@ const path = require('path');
 
 const config = {
   ROOT_DIR: __dirname,
-  URL_PORT: 8090,
+  URL_PORT: 3077,
   URL_PATH: 'http://localhost',
-  DB_URL: 'mongodb://127.0.0.1:27017/localhost',
+  DB_URL: 'mongodb://127.0.0.1:27017/wablicontest-72206',
   DEBUG_MODE: true,
   BASE_VERSION: '/v1',
   CONTROLLER_DIRECTORY: path.join(__dirname, 'controllers'),

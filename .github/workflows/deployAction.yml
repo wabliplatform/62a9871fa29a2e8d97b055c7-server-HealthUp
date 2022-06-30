@@ -14,6 +14,6 @@ jobs:
           password: ${{ secrets.WABLI_SERVER_SSH_PASSWORD }}
           port: ${{ secrets.WABLI_SERVER_SSH_PORT }}
           script: >-
-            ./wabli-applications/deploy.sh -b main -d local-host -r
+            ./wabli-applications/deploy.sh -b main -d wabli-contest-72206 -r
             https://github.com/wabliplatform/62a9871fa29a2e8d97b055c7-server-HealthUp.git
-            -f 62a9871fa29a2e8d97b055c7-server-HealthUp -p 8090
+            -f 62a9871fa29a2e8d97b055c7-server-HealthUp -p 3077

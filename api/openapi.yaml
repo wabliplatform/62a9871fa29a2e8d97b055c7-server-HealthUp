@@ -13,8 +13,8 @@ externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
-- description: local-host
-  url: http://localhost:8090/v1
+- description: wabli-contest-72206
+  url: http://83.212.100.226:3007/v1
 security:
 - {}
 tags:
